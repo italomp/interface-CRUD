@@ -81,7 +81,7 @@ buttonUserLogin.addEventListener("click", function(){
     .then(result.innerText = "Login realizado com sucesso!");
 });
 
-buttonCreateProduct.addEventListener("click", function(){
+buttonCreateProduct.addEventListener("click", async function(){
     let form = document.getElementById("createProduct");
     let inputName, inputDescription, inputPrice;
     let newProduct, createProductUrl, optRequest, token;
@@ -100,7 +100,7 @@ buttonCreateProduct.addEventListener("click", function(){
                   "description": inputDescription, 
                   "price": inputPrice};
     createProductUrl = "http://localhost:8080/api/v1/product/private/";
-    token = window.localStorage.getItem("token");
+    token = await window.localStorage.getItem("token");
     optRequest = {method: "post",
                   headers: {"Content-type":"application/json",
                             "Authorization":"Bearer " + token},
