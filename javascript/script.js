@@ -106,9 +106,17 @@ buttonCreateProduct.addEventListener("click", async function(){
                             "Authorization":"Bearer " + token},
                   credentials: "include",
                   body: JSON.stringify(newProduct)};
+    if(token == undefined){
+       console.log("token == undefined");
+    }
+    else if (token == Promise){
+        console.log("token == undefined");
+    }
+    else{
+        console.log(token);
+    }
     fetch(createProductUrl, optRequest)
     .then(resp => {result.innerText = resp.status;});
-    console.log(token);
 });
 
 
