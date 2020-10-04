@@ -103,8 +103,7 @@ buttonCreateProduct.addEventListener("click", async function(){
     token = await window.localStorage.getItem("token");
     optRequest = {method: "post",
                   headers: {"Content-type":"application/json",
-                            "Authorization":"Bearer " + token,
-                            "Referrer-Policy: unsafe-url},
+                            "Authorization":"Bearer " + token},
                   credentials: "include",
                   body: JSON.stringify(newProduct)};
     if(token == undefined){
