@@ -104,7 +104,7 @@ buttonCreateProduct.addEventListener("click", async function(){
     optRequest = {method: "post",
                   headers: {"Content-type":"application/json",
                             "Authorization":"Bearer " + token,
-                            "Referrer-Policy": "unsafe-url"},
+                            "Referrer-Policy": "unsafe-url"}, //browser enviar origem para qualquer endereço. Inclusive endereços não confiáveis.
                   credentials: "include",
                   body: JSON.stringify(newProduct)};
     if(token == undefined){
