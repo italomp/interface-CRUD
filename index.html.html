@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>interface para testar CRUD API</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+    <form id="userRegistry">
+        <span>User Registry</span>
+        Name:
+        <input type="text" name="inputName">
+        Login:
+        <input type="text" name="inputLogin">
+        Password:
+        <input type="password" name="inputPassword">
+        <button type="button" id="buttonUserRegistry">SEND</button>
+    </form>
+
+    <form id="userLogin">
+        <span>User Login</span>
+        Login:
+        <input type="text" name="inputLogin">
+        Password:
+        <input type="password" name="inputPassword">
+        <button type="button" id="buttonUserLogin">SEND</button>
+    </form>
+
+    <form id="createProduct">
+        <span>Create Product</span>
+        Name:
+        <input type="text" name="inputName">
+        Description:
+        <input type="text" name="inputDescription">
+        Price:
+        <input type="text" name="inputPrice">
+        <button type="button" id="buttonCreateProduct">SEND</button>
+    </form>
+
+    <form id="readProduct">
+        <span>Read Product</span>
+        Product ID:
+        <input type="text" name="inputProductID">
+        <button type="button" id="buttonReadProduct">SEND</button>
+    </form>
+
+    <form id="updateProduct">
+        <span>Update Product</span>
+        Product ID:
+        <input type="text" name="inputProductID">
+        Name:
+        <input type="text" name="inputName">
+        Description:
+        <input type="text" name="inputDescription">
+        Price:
+        <input type="text" name="inputPrice">
+        <button type="button" id="buttonUpdateProduct">SEND</button>
+    </form>
+
+    <form id="deleteProduct">
+        <span>Delete Product</span>
+        Product ID:
+        <input type="text" name="inputProductID">
+        <button type="button" id="buttonDeleteProduct">SEND</button>
+    </form>
+
+    <form id="result">
+        Result
+    </form>
+    <script type="text/javascript" src="javascript/script.js"></script>
+    
+</body>
+</html>
