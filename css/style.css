@@ -17,12 +17,12 @@ input{
 .container{
     display: grid;
     height: 100vh;
-    grid-template-areas: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 
-        "userRegistry userLogin createProduct readProduct updateProduct deleteProduct"
-        "userRegistry userLogin createProduct readProduct updateProduct deleteProduct"
-        "result result result result result result";
+        "createProduct readProduct updateProduct deleteProduct"
+        "createProduct readProduct updateProduct deleteProduct"
+        "result result result result";
     grid-gap: 5px;
 }
 
