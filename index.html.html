@@ -2,52 +2,100 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>interface para testar CRUD API</title>
+    <title>CRUD API INTERFACE</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="container">
-    <form id="createProduct">
-        <span>Create Product</span>
-        Name:
-        <input type="text" name="inputName">
-        Description:
-        <input type="text" name="inputDescription">
-        Price:
-        <input type="text" name="inputPrice">
-        <button type="button" id="buttonCreateProduct">SEND</button>
-    </form>
-
-    <form id="readProduct">
-        <span>Read Product</span>
-        Product ID:
-        <input type="text" name="inputProductID">
-        <button type="button" id="buttonReadProduct">SEND</button>
-    </form>
-
-    <form id="updateProduct">
-        <span>Update Product</span>
-        Product ID:
-        <input type="text" name="inputProductID">
-        Name:
-        <input type="text" name="inputName">
-        Description:
-        <input type="text" name="inputDescription">
-        Price:
-        <input type="text" name="inputPrice">
-        <button type="button" id="buttonUpdateProduct">SEND</button>
-    </form>
-
-    <form id="deleteProduct">
-        <span>Delete Product</span>
-        Product ID:
-        <input type="text" name="inputProductID">
-        <button type="button" id="buttonDeleteProduct">SEND</button>
-    </form>
-
-    <form id="result">
-        Result
-    </form>
-    <script type="text/javascript" src="javascript/script.js"></script>
+<body id="bodyContainer">
+    <header id="headerHomePage">
+        <h1>CRUD API INTERFACE</h1>
+    </header>
     
+    <main id="mainContentContainer">
+        <!--CREATE A PRODUCT-->
+        <div class="inputComponent">
+            <div class="tittleArea">
+                <h3>CREATE A PRODUCT</h3>
+            </div>
+            <div class="inputArea">
+                <form class="formContainer">
+                    <input name="product name" type="text" placeholder="Product Name">
+                    <input name="product description" type="text" placeholder="Product Description">
+                    <input name="product price" type="text" placeholder="Product Price">
+                </form>
+            </div>
+            <div class="buttonArea">
+                <button name="create button">
+                    Create
+                </button> 
+            </div>
+            <div class="resultArea">
+                
+            </div>
+        </div>
+
+        <!--UPDATE A PRODUCT-->
+        <div class="inputComponent">
+            <div class="tittleArea">
+                <h3>UPDATE A PRODUCT</h3>
+            </div>
+            <div class="inputArea">
+                <form class="formContainer">
+                    <input name="product id" type="text" placeholder="Product ID">
+                    <input name="product name" type="text" placeholder="Product Name">
+                    <input name="product description" type="text" placeholder="Product Description">
+                    <input name="product price" type="text" placeholder="Product Price">
+                </form>
+            </div>
+            <div class="buttonArea">
+                <button name="update button">
+                    Update
+                </button> 
+            </div>
+            <div class="resultArea">
+                
+            </div>
+        </div>
+
+        <!--SEARCH A PRODUCT-->
+        <div class="inputComponent">
+            <div class="tittleArea">
+                <h3>SEARCH A PRODUCT</h3>
+            </div>
+            <div class="inputArea">
+                <form class="formContainer">
+                    <input name="product id" type="text" placeholder="Product ID">
+                </form>
+            </div>
+            <div class="buttonArea">
+                <button name="search button">
+                    Search
+                </button> 
+            </div>
+            <div class="resultArea">
+                
+            </div>
+        </div>
+
+        <!--DELETE A PRODUCT-->
+        <div class="inputComponent">
+            <div class="tittleArea">
+                <h3>DELETE A PRODUCT</h3>
+            </div>
+            <div class="inputArea">
+                <form class="formContainer">
+                    <input name="product id" type="text" placeholder="Product ID">
+                </form>
+            </div>
+            <div class="buttonArea">
+                <button name="delete button">
+                    Delete
+                </button> 
+            </div>
+            <div class="resultArea">
+                
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="javascript/script.js"></script>
 </body>
 </html>

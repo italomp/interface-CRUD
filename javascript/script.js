@@ -1,120 +1,61 @@
-let buttonCreateProduct = document.getElementById("buttonCreateProduct");
-let buttonReadProduct = document.getElementById("buttonReadProduct");
-let buttonUpdateProduct = document.getElementById("buttonUpdateProduct");
-let buttonDeleteProduct = document.getElementById("buttonDeleteProduct");
-let result = document.getElementById("result");
+let createButton = document.getElementsByName("create button")[0];
+let updateButton = document.getElementsByName("update button")[0]; 
+let searchButton = document.getElementsByName("search button")[0];
+let deleteButton = document.getElementsByName("delete button")[0];
 
 /**
- * Esse trecho de código adiciona um evento ao elemento 'buttonCreateProduct'.
- * 
- * evento: click.
- * 
- * callback: função que cria um novo produto a partir dos dados inseridos no form,
- * envia uma request do tipo post para o servidor e insere o http status da response
- * no elemento 'result'.
- */
-buttonCreateProduct.addEventListener("click", function(){
-    let form = document.getElementById("createProduct");
-    let inputName, inputDescription, inputPrice;
-    let newProduct, createProductUrl, optRequest;
-    for(e of form){
-        if(e.name == "inputName"){
-            inputName = e.value;
-        }
-        else if(e.name == "inputDescription"){
-            inputDescription = e.value;
-        }
-        else if(e.name == "inputPrice"){
-            inputPrice = e.value;
-        }
-    }
-    newProduct = {"name": inputName, 
-                  "description": inputDescription, 
-                  "price": inputPrice};
-    createProductUrl = "http://localhost:8080/api/v1/product/";
-    optRequest = {method: "POST",
-                  headers: {"Content-type":"application/json"},
-                  body: JSON.stringify(newProduct)};
-    fetch(createProductUrl, optRequest)
-    .then(resp => {result.innerText = resp.status;});
-});
-
-/**
- * Esse trecho de código adiciona um evento ao elemento 'buttonReadProduct'.
- * 
- * evento: click.
- * 
- * calback: função que extrai o inputProductID do form, faz a requisição do tipo get,
- * converte o objeto json retornado numa string json e adiciona essa string ao
- * elemento 'result'.
- */
-buttonReadProduct.addEventListener("click", function(){
-    let form = document.getElementById("readProduct");
-    let indexInputProductID = 0;
-    let inputProductID = form[indexInputProductID].value;
-    let readProductUrl = "http://localhost:8080/api/v1/product/" + inputProductID;
-    fetch(readProductUrl)
-    .then(resp => resp.json())
-    .then(json => result.innerText = JSON.stringify(json));
-});
-
-/**
- * Esse trecho de código adiciona um evento ao elemento 'buttonUpdateProduct'.
+ * Esse trecho de código adiciona um evento ao elemento 'createButton'.
  * 
  * evento: click
  * 
- * callback: Função que cria a nova versão do produto que será atualizado, a partir
- * dos inputs fornecidos no form; enviar uma requisição do tipo PUT para o servidor e
- * e insere o http status da response no elemento 'result'.
+ * callback: função que cria um newUser a partir dos dados do formulário,
+ * envia uma request do tipo post e altera o elemento 'resultArea' de 
+ * acordo com o resultado da response
  */
-buttonUpdateProduct.addEventListener("click", function(){
-    let form = document.getElementById("updateProduct");
-    let inputProductID, inputName, inputDescription, inputPrice;
-    let product, createProductUrl, optRequest;
-    for(e of form){
-        if(e.name == "inputProductID"){
-            inputProductID = e.value;
+createButton.addEventListener("click", function(){
+    let productName, productDescription, productPrice, newProduct;
+    let form = document.getElementsByClassName("formContainer")[0];
+    let createProductUrl, optRequest;
+    let resultArea = document.getElementsByClassName("resultArea")[0];
+
+    for(input of form){
+        if(input.name == "product name"){
+            productName = input.value;
         }
-        else if(e.name == "inputName"){
-            inputName = e.value;
+        else if (input.name == "product description"){
+            productDescription = input.value;
         }
-        else if(e.name == "inputDescription"){
-            inputDescription = e.value;
-        }
-        else if(e.name == "inputPrice"){
-            inputPrice = e.value;
+        else if(input.name == "product price"){
+            productPrice == input.value;
         }
     }
-    product = {"id": inputProductID,
-                  "name": inputName, 
-                  "description": inputDescription, 
-                  "price": inputPrice};
+    newProduct = {name: productName,                 
+                  description: productDescription,
+                  price: productPrice };
     createProductUrl = "http://localhost:8080/api/v1/product/";
-    optRequest = {method: "PUT",
-                  headers: {"Content-type":"application/json"},
-                  body: JSON.stringify(product)};
+    optRequest = {method: "POST",
+                  headers: {"Content-type": "application/json"},
+                  body: JSON.stringify(newProduct)};
     fetch(createProductUrl, optRequest)
-    .then(resp => {result.innerText = resp.status;});
+    .then(resp => addContentAndStyleInResultArea(resultArea, resp));
 });
 
 /**
- * Esse trecho de código adiciona o um evento ao elemento 'buttonDeleteProduct'.
+ * Essa é uma função auxiliar que adiciona conteúdo e estilo ao
+ * elemento 'resultArea' de acordo com a response recebida
  * 
- * evento: click.
+ * @param {resultArea} - elemento no qual o conteúdo e o estilo
+ * serão inseridos
  * 
- * callback: Função que pega o inputProductID do form e envia uma requisição do
- * tipo delete para o servidor e adiciona o http status da resposta no elemento
- * 'result'.
+ * @param {response} - response recebida do servidor
  */
-buttonDeleteProduct.addEventListener("click", function(){
-    let form = document.getElementById("deleteProduct");
-    let indexInputProductID = 0;
-    let inputProductID = form[indexInputProductID].value;
-    optRequest = {method: "DELETE",
-                  headers: {"Content-type":"application/json"},};
-    let deleteProductUrl = "http://localhost:8080/api/v1/product/" + inputProductID;
-    fetch(deleteProductUrl, optRequest)
-    .then(resp => {result.innerText = resp.status;});
-
-});
-
+function addContentAndStyleInResultArea(resultArea, response){
+    if(response.status == 200){
+        resultArea.innerHTML = "<h3> Product Was Created Successful! </h3>";
+        resultArea.style.backgroundColor = "#4bb543";
+        resultArea.style.color = "#1f4a1c";
+    }
+    else{
+        // nao consegui provocar o erro no servidor
+    }
+}

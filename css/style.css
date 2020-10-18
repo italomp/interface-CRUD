@@ -1,98 +1,100 @@
-span{
-    font-size: 24px;
+:root{
+    font-family: Helvetica;
 }
 
-form{
-    border-radius: 10px;
+#bodyContainer{
+    display: grid;
+    grid-template-rows: 0.2fr 1fr;
+    gap: 20px;
+}
+
+#headerHomePage{
+    display: grid;
+    background-color: #cc0066;
+    color: white;
+    justify-items: center;
+}
+
+
+#mainContentContainer{
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+}
+
+.inputComponent{
+    border: solid 1px #cc0066;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: 
+        "tittle tittle tittle tittle"
+        "input input input button"
+        "result result result result";
+    width: 75%;
+}
+
+@media only screen and (max-width: 560px){
+    .inputComponent{
+        border: solid 1px #cc0066;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 1fr auto auto;
+        grid-template-areas: 
+            "tittle tittle tittle tittle"
+            "input input input input"
+            "button button button button"
+            "result result result result";
+        width: 100%;
+    }
+}
+
+.tittleArea{
+    grid-area: tittle;
+    justify-self: center;
+    color: #cc0066;
+}
+
+.inputArea{
+    grid-area: input;
+    margin: 5px;
+}
+
+.buttonArea{
+    grid-area: button;
+    justify-self: center;
+}
+
+.resultArea{
+    grid-area: result;
+    margin: 5px;
+    border-radius: 5px;
+    display: grid;
+    justify-items: center;
 }
 
 button{
-    border-radius: 10px;
+    background-color: #cc0066;
+    color: white;
+    font-weight: bolder;
+    border-radius: 5px;
+    border: 0px;
+    height: 32px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
-input{
-    border-radius: 10px;
+button:hover{
+    background-color: white;
+    color: #cc0066;
+    border:solid 2px #cc0066;
 }
 
-.container{
+.formContainer{
     display: grid;
-    height: 100vh;
-    grid-template-areas: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-        "createProduct readProduct updateProduct deleteProduct"
-        "createProduct readProduct updateProduct deleteProduct"
-        "result result result result";
-    grid-gap: 5px;
-}
-
-#userRegistry{
-    background-color: #cce6ff;
-    grid-area: userRegistry;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-#buttonUserRegistry{
-
-}
-
-#userLogin{
-    background-color: #66b3ff;
-    grid-area: userLogin;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-#buttonUserLogin{
-
-}
-
-#createProduct{
-    background-color: #cce6ff;
-    grid-area: createProduct;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-#buttonCreateProduct{
-
-}
-
-#readProduct{
-    background-color: #66b3ff;
-    grid-area:readProduct;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-#buttonReadProduct{
-
-}
-
-#updateProduct{
-    background-color: #cce6ff;
-    grid-area: updateProduct;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1f 1f;
-}
-
-#buttonUpdateProduct{
-
-}
-
-#deleteProduct{
-    background-color: #66b3ff;
-    grid-area: deleteProduct;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-#buttonDeleteProduct{
-    
-}
-
-#result{
-    grid-area: result;
-    font-size: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: auto;
+    gap: 5px;
 }
